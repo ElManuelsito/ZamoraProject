@@ -1,3 +1,10 @@
+# NOTES FOR DEVELOPMENT OF "ZAMORA PROJECT"
+ * favicon should be a placeholder, change it when posible
+ * font type & color and bg color are subject to change, especially anything font related
+ * implement a google maps component (with a 'click to get directions)
+ * keep basic web app structure in mind, stuff like navbar, body, content/elements at the sides, footer (here you can have stuff like 'review us', 'social media', address and what not), etc.
+ * other basic stuff to keep in mind: about us (could either go at the header/navbar or footer), contacts (could also go in main page to show credibility, with pictures of said contacts), accreditations, button to go back up, 'learn more' button, 'before-after' images, maybe a short 'homemade feel' video, FAQs, etc.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
