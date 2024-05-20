@@ -1,4 +1,4 @@
-# NOTES FOR DEVELOPMENT OF "ZAMORA PROJECT"
+# Notes for developtment of "ZAMORA PROJECT"
  * favicon should be a placeholder, change it when posible
  * font type & color and bg color are subject to change, especially anything font related
  * implement a google maps component (with a 'click to get directions)
