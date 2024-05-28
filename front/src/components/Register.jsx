@@ -1,5 +1,5 @@
-import { Formik, Form, Field } from 'formik'
-import axios from 'axios'
+import { Formik, Form, Field } from 'formik';
+import axios from 'axios';
 
 export const Register = () => {
 
@@ -11,14 +11,12 @@ export const Register = () => {
 
   const handleRegister = async (values) => {
     console.log('valores desde el front', values)
-    // try {
-    //     const response = await axios.post('https://localhost:5000/auth/register', values);
-    //     console.log(response.data);
-    // }  catch (error) {
-    //     console.error(error);
-    // }
-    const response = await axios.post('https://localhost:5000/auth/register', values);
-    console.log(response.data);
+    try {
+        const response = await axios.post('http://localhost:5000/auth/register', values);
+        console.log(response.data);
+    }  catch (error) {
+        console.error(error);
+    }
   };
 
   return (
@@ -61,8 +59,7 @@ export const Register = () => {
                         />
                         <label htmlFor="floatingPassword">Contraseña</label>
                     </div>
-                    {/* <button class="btn btn-primary w-100 py-2" type="submit" onClick={handleRegister}>Registrarse</button> */}
-                    <button class="btn btn-primary w-100 py-2" type="submit">Registrarse</button>
+                    <button class="btn btn-primary w-100 py-2" type="submit" onClick={handleRegister}>Registrarse</button>
                 </Form>
             </Formik>
         </div>
