@@ -51,7 +51,7 @@ export const Register = () => {
                     </div>
                     <div class="form-floating">
                         <Field 
-                            type="text"
+                            type="password"
                             class="form-control"
                             id="floatingPassword"
                             placeholder="Password"
