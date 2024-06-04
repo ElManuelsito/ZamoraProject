@@ -8,17 +8,20 @@ export const Register = () => {
         email:'',
         password:''
     };
-
-  const handleRegister = async (values) => {
-    console.log('valores desde el front', values)
-    try {
-        const response = await axios.post('http://localhost:5000/auth/register', values);
-        console.log(response.data);
-    }  catch (error) {
-        console.error(error);
-    }
-  };
-
+// handleBlaBla es un standar, es la funcion q ocurre cuando el usuario le da al boton de enviar datos
+    const handleRegister = async (values) => {
+        console.log('valores desde el front', values)
+        try {
+        // metodos http incluye: POST, pero hay mas
+        // POST sirve para enviar datos al otro lado, con un get para traer informacion del otro lado
+        // values = lo que recolectó el formulario, es lo q se va a enviar al backend
+            const response = await axios.post('http://localhost:5000/auth/register', values);
+            console.log(response.data);
+        }  catch (error) {
+            console.error(error);
+        }
+    };
+// return está abajo, la logica arriba, esto siempre, el return solo mostrará codigo html
   return (
     <>
       <div class="row justify-content-center">

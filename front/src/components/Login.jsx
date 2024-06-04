@@ -5,7 +5,17 @@ export const Login = () => {
     const initialValues = {
         email:'',
         password:''
-    }
+    };
+    
+    const handleLogin = async (values) => {
+        console.log('valores desde el front', values)
+        try {
+            const response = await axios.post('http://localhost:5000/auth/login', values);
+            console.log(response.data);
+        }  catch (error) {
+            console.error(error);
+        }
+      };
 
   return (
     <>
@@ -14,7 +24,7 @@ export const Login = () => {
             <h1 class="services_text custom_main">Inicio de sesión</h1>
             <Formik
                 initialValues={initialValues}
-                // onSubmit={algo...}
+                onSubmit={handleLogin}
             >
                 <Form>
                     <div class="form-floating">
@@ -37,7 +47,7 @@ export const Login = () => {
                         />
                         <label htmlFor="floatingPassword">Contraseña</label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit">Iniciar sesión</button>
+                    <button class="btn btn-primary w-100 py-2" type="submit" onClick={handleLogin}>Iniciar sesión</button>
                 </Form>
             </Formik>
         </div>
