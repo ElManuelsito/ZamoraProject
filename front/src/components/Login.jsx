@@ -1,4 +1,5 @@
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field } from 'formik';
+import axios from 'axios';
 
 export const Login = () => {
 
@@ -39,7 +40,7 @@ export const Login = () => {
                     </div>
                     <div class="form-floating">
                         <Field 
-                            type="text"
+                            type="password"
                             class="form-control"
                             id="floatingPassword"
                             placeholder="Password"
