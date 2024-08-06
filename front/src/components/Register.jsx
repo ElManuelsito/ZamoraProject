@@ -1,13 +1,18 @@
 import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 export const Register = () => {
+
+    const navigate = useNavigate();
 
     const initialValues = {
         name: '',
         email:'',
         password:''
     };
+
 // handleBlaBla es un standar, es la funcion q ocurre cuando el usuario le da al boton de enviar datos
     const handleRegister = async (values) => {
         console.log('valores desde el front', values)
@@ -17,6 +22,13 @@ export const Register = () => {
         // values = lo que recolectó el formulario, es lo q se va a enviar al backend
             const response = await axios.post('http://localhost:5000/auth/register', values);
             console.log(response.data);
+            Swal.fire({
+                icon: 'success',
+                title: 'Registro exitoso',
+                showConfirmButton: false,
+                timer: 1800
+            })
+            navigate('/home')
         }  catch (error) {
             console.error(error);
         }
