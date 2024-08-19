@@ -2,6 +2,8 @@ import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 export const Register = () => {
 
@@ -13,7 +15,9 @@ export const Register = () => {
         password:''
     };
 
-// handleBlaBla es un standar, es la funcion q ocurre cuando el usuario le da al boton de enviar datos
+    const { setUser } = useContext(UserContext);
+
+// handleBlaBla es un standar, es la funcion q ocurre cuando el usuario le da al boton que/de envia/r datos
     const handleRegister = async (values) => {
         console.log('valores desde el front', values)
         try {
@@ -27,6 +31,9 @@ export const Register = () => {
                 title: 'Registro exitoso',
                 showConfirmButton: false,
                 timer: 1800
+            });
+            setUser({
+                logged:true
             })
             navigate('/home')
         }  catch (error) {

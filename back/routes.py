@@ -1,7 +1,7 @@
 from flask import jsonify, request, Blueprint
 from database import db
-
 from models.User import User
+# import requests
 
 auth = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -19,7 +19,7 @@ def register():
     print("We're down ere")
     if User.query.filter_by(email=email).first():
         print("im here!")
-        return jsonify({'mensaje':'ya existe un usuario registrado con ese mail'})
+        return jsonify({'mensaje':'ya existe un usuario registrado con ese mail'}), 401
     else:
         print("maybe here??")
         # el name a la derecha del atributo es el mismo que está en User.py, tiene que llamarse igual, si en
@@ -35,8 +35,8 @@ def register():
 def login():
     # tanto request.json como data.get como se muestran aca son validas
     data = request.get_json()
-    email = data.get['email']
-    password = data.get['password']
+    email = data.get('email')
+    password = data.get('password')
     print(email, password)
 
     emailDb = User.query.filter_by(email=email).first()
@@ -47,4 +47,7 @@ def login():
         response = {'mensaje':'error'}
         print('no logeado, datos erroneos')
 
-        return jsonify(response), 200
+        return jsonify(response), 401
+
+
+# externalApi = Blueprint('externalApi')

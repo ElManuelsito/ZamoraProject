@@ -4,7 +4,7 @@ from logging.config import fileConfig
 from flask import current_app
 
 from alembic import context
-
+# this line below is what we needed for data to go to the DB, for some reason, headache
 from models import User
 
 # this is the Alembic Config object, which provides
