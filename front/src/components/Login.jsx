@@ -39,35 +39,35 @@ export const Login = () => {
 
   return (
     <>
-      <div class="row justify-content-center">
-        <div class="col-md-4">
-            <h1 class="services_text custom_main">Inicio de sesión</h1>
+      <div className="row justify-content-center">
+        <div className="col-md-4">
+            <h1 className="services_text custom_main">Inicio de sesión</h1>
             <Formik
                 initialValues={initialValues}
                 onSubmit={handleLogin}
             >
                 <Form>
-                    <div class="form-floating">
+                    <div className="form-floating">
                         <Field 
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             id="floatingInput"
                             placeholder="Email"
                             name="email" // esta variable deberia tener el mismo nombre que la variable en initialValues
                         />
                         <label htmlFor="floatingInput">Correo</label>
                     </div>
-                    <div class="form-floating">
+                    <div className="form-floating">
                         <Field 
                             type="password"
-                            class="form-control"
+                            className="form-control"
                             id="floatingPassword"
                             placeholder="Password"
                             name="password"
                         />
                         <label htmlFor="floatingPassword">Contraseña</label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit" onClick={handleLogin}>Iniciar sesión</button>
+                    <button className="btn btn-primary w-100 py-2" type="submit" onClick={handleLogin}>Iniciar sesión</button>
                 </Form>
             </Formik>
         </div>
