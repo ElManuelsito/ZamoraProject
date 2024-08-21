@@ -12,7 +12,7 @@ def register():
     email = request.json['email']
     password = request.json['password']
     print(name, email, password) # este print solo se mostraria en consola, no al usuario, pero si en inspect element
-    # familia de los codigos 200 es que todo esta bien, la de los 400 q algo salio mal
+    role = 'user' # familia de los codigos 200 es que todo esta bien, la de los 400 q algo salio mal
     # jsonify pertence a flask, y el {} esta vacio porq no hay nada q el back tenga q mandar al front
     # funcion retorna 200, verificable en consola (capaz en inspect element tmb?)
 
@@ -24,11 +24,11 @@ def register():
         print("maybe here??")
         # el name a la derecha del atributo es el mismo que está en User.py, tiene que llamarse igual, si en
         # User.py name se llama name1, en esta variable el atributo deberia ser 'name=name1' 
-        user = User(name=name, email=email, password=password)
+        user = User(name=name, email=email, password=password, role=role)
         db.session.add(user)
         db.session.commit()
 
-        return jsonify({}), 200
+        return jsonify(role=role), 200
     
 
 @auth.route('/login', methods=['POST'])
@@ -40,13 +40,15 @@ def login():
     print(email, password)
 
     emailDb = User.query.filter_by(email=email).first()
+    role = emailDb.role
+    print('role', role)
+
     if emailDb and emailDb.password == password:
         print('logeado correctament')
-        return jsonify({}), 200
+        return jsonify(role=role), 200
     else:
-        response = {'mensaje':'error'}
+        response = {'Mensaje': 'Error'}
         print('no logeado, datos erroneos')
-
         return jsonify(response), 401
 
 

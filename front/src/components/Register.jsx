@@ -26,6 +26,10 @@ export const Register = () => {
         // values = lo que recolectó el formulario, es lo q se va a enviar al backend
             const response = await axios.post('http://localhost:5000/auth/register', values);
             console.log(response.data);
+
+            const {role} = response.data // variable q proviene del back
+            console.log('role', role)
+
             Swal.fire({
                 icon: 'success',
                 title: 'Registro exitoso',
@@ -33,9 +37,10 @@ export const Register = () => {
                 timer: 1800
             });
             setUser({
-                logged:true
+                logged:true,
+                role: role,
             })
-            navigate('/home')
+            navigate('/panel')
         }  catch (error) {
             console.error(error);
         }

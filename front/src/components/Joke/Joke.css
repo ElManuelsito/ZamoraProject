@@ -1,3 +1,16 @@
 .button-j {
     border-radius: 12px;
+    border-color: #1a8a72;
+    color: #1c3b5c;
+    background-color: #c8e3de
+}
+
+.center-j {
+    text-align: center;
+    margin: auto
+}
+
+.justify-j {
+    text-align: justify;
+    margin: auto
 }

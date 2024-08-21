@@ -18,10 +18,15 @@ export const Login = () => {
     const { setUser } = useContext(UserContext);
     
     const handleLogin = async (values) => {
-        console.log('valores desde el front', values)
+        // console.log('valores desde el front', values)
         try {
             const response = await axios.post('http://localhost:5000/auth/login', values);
             console.log(response.data);
+
+            
+            const {role} = response.data // variable q proviene del back
+            console.log('role', role)
+
             Swal.fire({
                 icon: 'success',
                 title: 'Logueo exitoso',
@@ -29,11 +34,19 @@ export const Login = () => {
                 timer: 1800
             });
             setUser({
-                logged:true
+                logged:true,
+                role: role,
             });
-            navigate('/home');
+            navigate('/panel');
         }  catch (error) {
             console.error(error);
+            console.log('estoy en el catch')
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al autenticarse',
+                showConfirmButton: false,
+                timer: 1800
+            })
         }
       };
 

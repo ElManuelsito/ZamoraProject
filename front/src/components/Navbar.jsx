@@ -1,6 +1,17 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../context/UserContext'
 
 export const Navbar = () => {
+
+    const { user, setUser } = useContext(UserContext);
+
+    const handleLogOut = () => {
+        setUser({
+            logged:false
+        })
+    }
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
         {/* <h1>Hi</h1> */}
@@ -19,26 +30,52 @@ export const Navbar = () => {
                                 <Link className="nav-link" to="/about-us">Nosotros</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/the-funny">Comedia (real)</Link>
+                                <Link className="nav-link" to="/the-funny">API Test</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/contact">Contacto</Link>
                             </li>
                         </ul>
                     </div>
-                    <div className="d-flex justify-content-end" style={{margin: 'auto', width:'100%'}}>
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/register">Registrarse</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/login">Ingresar</Link>
-                            </li>
-                            <button className="btn btn-outline-warning me-2" type="button">PEDIR TURNO</button>
-                        </ul>
-                    </div>
-                {/* <div className="position-absolute top-50 end-0 translate-middle">
-                </div> */}
+                    {
+                        user.role === 'user' ? (
+                            <div className="d-flex justify-content-end" style={{margin: 'auto', width:'100%'}}>
+                                <ul className="navbar-nav">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/panel">Panel usuario</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/" onClick={handleLogOut}><b>Salir</b></Link>
+                                    </li>
+                                    <button className="btn btn-outline-warning me-2" type="button">PEDIR TURNO</button>
+                                </ul>
+                            </div>
+                        ): user.role === 'admin' ? (
+                            <div className="d-flex justify-content-end" style={{margin: 'auto', width:'100%'}}>
+                                <ul className="navbar-nav">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/panel">Panel admin</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/" onClick={handleLogOut}><b>Salir</b></Link>
+                                    </li>
+                                    <button className="btn btn-outline-warning me-2" type="button">PEDIR TURNO</button>
+                                </ul>
+                            </div>
+                        ):(
+                            <div className="d-flex justify-content-end" style={{margin: 'auto', width:'100%'}}>
+                                <ul className="navbar-nav">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/register">Registrarse</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link active" aria-current="page" to="/login">Ingresar</Link>
+                                    </li>
+                                    <button className="btn btn-outline-warning me-2" type="button">PEDIR TURNO</button>
+                                </ul>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import './Joke.css'
 
 export const Joke = () => {
 
@@ -32,16 +33,15 @@ export const Joke = () => {
     };
 
   return (
-    <div style={{textAlign: 'center', margin: 'auto'}}>
+    <div className='center-j'>
         <br />
         <h1><b>Wanna hear a joke?</b></h1>
         <br />
-        <button style={{borderRadius: '12px', borderColor: '#1a8a72', color: '#1c3b5c', backgroundColor: '#c8e3de'}} onClick={getJoke}>{label}</button>
+        <button className='button-j' onClick={getJoke}>{label}</button>
         <br />
         <br />
-        <div style={{textAlign: 'justify', margin: 'auto'}}>
+        <div className='justify-j'>
         </div>
-        {/* <h4>{joke}ABCDDEJ THE QUICK BROWN DUMBASS JUMPS OVER THE OTHER LAZ FDSUCK FUCK WHATEVER JUSTFILL IT UP LUB IT UP 300 DOLLARS</h4> */}
         <h4>{joke}</h4>
         <br />
     </div>
