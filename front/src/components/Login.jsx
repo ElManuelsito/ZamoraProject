@@ -39,14 +39,14 @@ export const Login = () => {
             });
             navigate('/panel');
         }  catch (error) {
-            console.error(error);
-            console.log('estoy en el catch')
+            console.log('estoy en el catch');
             Swal.fire({
                 icon: 'error',
                 title: 'Error al autenticarse',
                 showConfirmButton: false,
                 timer: 1800
-            })
+            });
+            console.error(error)
         }
       };
 

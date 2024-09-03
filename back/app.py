@@ -1,11 +1,14 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate
-from routes import auth
+# from flask_restful import Api
+from resources.auth.routes import auth
+# from back.resources.Appointment import Appointment
 from database import db, FULL_URL_DB
 from models import User
 
 app = Flask(__name__)
+# api = Api(app)
 CORS(app)
 
 
@@ -22,6 +25,8 @@ migrate = Migrate()
 migrate.init_app(app, db)
 
 app.register_blueprint(auth)
+
+# app.add_resource(Appointment, '/appointment') # ese /appointment es el mismo que aparece en el blueprint
 
 if __name__ == "__main__":
     app.run(port=5000)
